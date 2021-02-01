@@ -27,3 +27,5 @@ def facotrial(n):
 n = -20
 # Calculate the factorial of n.
 print(f"The factorial of {n} is {facotrial(n)}.")
+
+#Practice code collatz conjecture
