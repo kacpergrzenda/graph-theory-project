@@ -1,4 +1,4 @@
-# Ian Mcloughlin 
+# Kacper Grzenda
 # Python basics
 # 2021-01-30
 
