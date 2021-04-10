@@ -1,3 +1,13 @@
 {
-    "python.pythonPath": "C:\\Users\\kacper\\anaconda3\\python.exe"
+    "python.pythonPath": "C:\\Users\\kacper\\anaconda3\\python.exe",
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+          {
+            "scope": "meta.function-call.generic.python",
+            "settings": {
+              "foreground": "#DCDCAA"
+            }
+          }
+        ]
+      },
 }

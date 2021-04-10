@@ -49,7 +49,7 @@ def shunt(infix):
 
 #check if i was running the commandline as script
 if __name__ == "__main__":
-    for infix in ["a.(b.b)*.a", "1.(0.0)*.1"]:
+    for infix in ["a.(b.b)*.a", "1.(0.0)*.1"], "*dog":
         # infix = "3+4*(2-1)"
         # postfix = "3421-*+"
         print(f"{infix} - > {infix}")
