@@ -3,7 +3,7 @@
 
 import argparse  # https://docs.python.org/3/library/argparse.html
 import os  # https://docs.python.org/3/library/os.html
-from pathlib import Path
+from pathlib import Path # https://docs.python.org/3/library/pathlib.html
 
 
 class State:
@@ -184,18 +184,15 @@ def shunt(infix):
     return postfix
 
 
-# User Input.
-# Store a String from user Input | python3 graph-theory-project.py /mnt/c/Users/kacper/Desktop/test | 
-# python3 graph-theory-project.py /mnt/c/Users/kacper/Desktop/test test.txt "*kacper"
-# python3 graph-theory-project.py /mnt/c/Users/kacper/Desktop/test test.txt "abb.*.a."
+# User Command Line Input.
 parser = argparse.ArgumentParser(
     description='Store a String', usage='%(prog)s [Enter Directory Path, File Name, Expression]')
 # Parser takes in a file name which will be of type string
 parser.add_argument('file', type=str, nargs='+',
                     help='an integer for the accumulator')
-args = parser.parse_args()
-print(args.file)
 
+# Parse each argument into a seperate element and store in an array.
+args = parser.parse_args()
 
 # Change Directory.
 filePath = Path(args.file[0])
@@ -203,17 +200,31 @@ os.chdir(filePath)
 
 # Concatenation DirectoryPath and File Name.
 fullPath = args.file[0] + "/" + args.file[1]
-print(fullPath)
 
-# Open File in Read Mode.
-f = open(fullPath, 'r')
-# print(f.read().find( args.file[2])) #Find the line Number of the word enterd by user
-print(f"{args.file[2]} - > {args.file[2]}")
+# Postfix.
 print(f"postfix: {shunt(args.file[2])}")
+postfix = shunt(args.file[2])
+
+# NFA.
 print(f"nfa:    {re_to_nfa(shunt(args.file[2]))}")
+nfa = re_to_nfa(postfix)
+
+# opening the text file
+with open(fullPath,'r') as file:
+    # reading each line    
+    for line in file:
+        # reading each word        
+        for word in line.split():
+            # print(f"Word: {word}")
+            m = nfa.match(word)
+            if m == True:
+                print(f"Word Match: '{word}': {m}")
 
 
-#Close File .
-f.close()
+
+
+
+
+
 
 
